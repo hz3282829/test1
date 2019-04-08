@@ -17173,7 +17173,7 @@ var egret;
          * @platform Web,Native
          * @language zh_CN
          */
-        Capabilities.engineVersion = "5.2.16";
+        Capabilities.engineVersion = "5.2.17";
         /***
          * current render mode.
          * @type {string}
@@ -23258,7 +23258,11 @@ var egret;
             }
         }
         var prototype = classDefinition.prototype;
-        prototype.__class__ = className;
+        Object.defineProperty(prototype, '__class__', {
+            value: className,
+            enumerable: false,
+            writable: true
+        });
         var types = [className];
         if (interfaceNames) {
             types = types.concat(interfaceNames);
@@ -23273,7 +23277,11 @@ var egret;
                 }
             }
         }
-        prototype.__types__ = types;
+        Object.defineProperty(prototype, '__types__', {
+            value: types,
+            enumerable: false,
+            writable: true
+        });
     }
     egret.registerClass = registerClass;
 })(egret || (egret = {}));
@@ -24209,7 +24217,7 @@ var egret;
             this.lastTimeStamp = timeStamp;
             this._currentCount++;
             var complete = (this.repeatCount > 0 && this._currentCount >= this.repeatCount);
-            if (this._currentCount <= this.repeatCount) {
+            if (this.repeatCount == 0 || this._currentCount <= this.repeatCount) {
                 egret.TimerEvent.dispatchTimerEvent(this, egret.TimerEvent.TIMER);
             }
             if (complete) {

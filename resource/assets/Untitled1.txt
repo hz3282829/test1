@@ -1,0 +1,35 @@
+subkeys": ",,back_g_gaoliang_png,,,,icon_g_da_pai2_png,,icon_g_da_pai4_png,icon_g_da_pai5_png,,,icon_g_xiao_pai2_png,,,
+
+back_g_paimian_png 空白背景框
+back_g_beimian_png  背面 垂直
+back_g_beimian2_png   背面 斜面
+
+红 数字
+num_g_r_1_png,num_g_r_2_png,num_g_r_3_png,num_g_r_4_png,num_g_r_5_png,num_g_r_6_png,num_g_r_7_png,num_g_r_8_png,num_g_r_9_png
+num_g_r_10_png,num_g_r_11_png,num_g_r_12_png,num_g_r_13_png,num_g_r_14_png
+
+红心大图
+icon_g_da_pai1_png
+红心小图
+icon_g_xiao_pai1_png
+红方片 大图
+icon_g_da_pai3_png
+红方小图
+icon_g_xiao_pai3_png
+
+黑桃 大图
+icon_g_da_pai0_png
+黑桃 小图
+icon_g_xiao_pai0_png
+
+黑梅 大图
+icon_g_da_pai2_png
+黑梅 小图
+icon_g_xiao_pai2_png
+
+
+黑数字
+num_g_b_10_png,num_g_b_11_png,num_g_b_12_png,num_g_b_13_png,num_g_b_14_png,num_g_b_1_png,num_g_b_2_png,num_g_b_3_png,num_g_b_4_png,num_g_b_5_png,num_g_b_6_png,num_g_b_7_png,num_g_b_8_png,num_g_b_9_png
+
+
+
