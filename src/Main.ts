@@ -28,6 +28,9 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 class Main extends eui.UILayer {
+    private   cardContainer1:CardContainer = new CardContainer();
+    private   cardContainer2:CardContainer = new CardContainer();
+    private   cardContainer3:CardContainer = new CardContainer();
 
     protected createChildren(): void {
         super.createChildren();
@@ -105,21 +108,35 @@ class Main extends eui.UILayer {
         let stageH = this.stage.stageHeight;
 
         Data.initIconfo();
-        let cardInfo:Object =Data.getCardData("hearts",9); 
-        //this.card = new CardUnit();
-        let card = new CardUnit();
-            //card.creatCard(bgtextr,numtextr,smalltextr,bigtextr,backtextr,nameStr);
-            card.creatCardByName(cardInfo);
-            this.addChild(card);
+        let cardInfo0:Object =Data.getCardData("hearts",9); 
+        let cardInfo1:Object =Data.getCardData("spades",5); 
+        let cardInfo2:Object =Data.getCardData("clubs",8); 
+        let cardInfo3:Object =Data.getCardData("diamonds",2); 
+        let cardInfo4:Object =Data.getCardData("joker",12); 
+        this.cardContainer1.createCard([cardInfo0,cardInfo1,cardInfo2,cardInfo3,cardInfo4]);
+        this.addChild(this.cardContainer1);
+        this.cardContainer1.x = 250;
 
-            let cardInfo1:Object =Data.getCardData("spades",5); 
-        //this.card = new CardUnit();
-        let card1 = new CardUnit();
-            //card.creatCard(bgtextr,numtextr,smalltextr,bigtextr,backtextr,nameStr);
-            card1.creatCardByName(cardInfo1);
-            this.addChild(card1);
-            card1.x =50;
-            card1.y = 100;
+        let cardInfo10:Object =Data.getCardData("spades",4); 
+        let cardInfo11:Object =Data.getCardData("spades",10); 
+        let cardInfo12:Object =Data.getCardData("clubs",3); 
+        let cardInfo13:Object =Data.getCardData("diamonds",1); 
+        let cardInfo14:Object =Data.getCardData("diamonds",8); 
+        this.cardContainer2.createCard([cardInfo10,cardInfo11,cardInfo12,cardInfo13,cardInfo14]);
+        this.addChild(this.cardContainer2);
+        this.cardContainer2.x = 100;
+        this.cardContainer2.y = 300;
+
+        let cardInfo20:Object =Data.getCardData("joker",13); 
+        let cardInfo21:Object =Data.getCardData("diamonds",5); 
+        let cardInfo22:Object =Data.getCardData("clubs",8); 
+        let cardInfo23:Object =Data.getCardData("diamonds",9); 
+        let cardInfo24:Object =Data.getCardData("joker",12); 
+        this.cardContainer3.createCard([cardInfo20,cardInfo21,cardInfo22,cardInfo23,cardInfo24]);
+        this.addChild(this.cardContainer3);
+        this.cardContainer3.x = 400;
+        this.cardContainer3.y = 300;
+
         
         let replaceCardAsset:Function =function(){
             let bg1textr:egret.Texture = RES.getRes("cardsheet#back_g_beimian_png");
@@ -131,7 +148,9 @@ class Main extends eui.UILayer {
         };
 
          
-        let tw2 = egret.Tween.get(card);
+         
+
+        //let tw2 = egret.Tween.get(card0);
             //tw2.to({x:500,y:500},1000);
             //tw2.to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset,card).to({scaleX:1}, 300, egret.Ease.sineIn);
             //egret.Tween.get(card).to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset).to({scaleX:1}, 300, egret.Ease.sineIn);
@@ -142,7 +161,7 @@ class Main extends eui.UILayer {
         button.horizontalCenter = 0;
         button.verticalCenter = 0;
         this.addChild(button);
-        button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, card);
+        button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
     }
     //
     private replaceCardAsset1():void
@@ -170,23 +189,15 @@ class Main extends eui.UILayer {
      * Description file loading is successful, start to play the animation
      */
     
-    private replaceCar():void
-    {
-        
-    }
 
     /**
      * 点击按钮
      * Click the button
      */
     private onButtonClick(e: egret.TouchEvent) {
-       // this.replaceCar();
-       console.log(this);
-     
-      // console.log(e.currentTarget)
-       this.replaceCar()
-       //let targetThis = new egret.Cla();
-    //    targetThis = this;
-    //    targetThis.replaceCar();
+       this.cardContainer1.replaceCardAsset();
+       this.cardContainer2.replaceCardAsset();
+       this.cardContainer3.replaceCardAsset();
+
     }
 }

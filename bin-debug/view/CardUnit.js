@@ -19,7 +19,7 @@ var CardUnit = (function (_super) {
     }
     CardUnit.prototype.creatCardByName = function (cardInfo) {
         this._cardInfo = cardInfo;
-        console.log(cardInfo);
+        // console.log(cardInfo);
         var bgData = cardInfo["background"];
         var cardSheetName = "cardsheet#";
         var bgStr = cardSheetName + bgData[0];
@@ -59,9 +59,9 @@ var CardUnit = (function (_super) {
         var nameStr = name;
     };
     CardUnit.prototype.replaceCar = function () {
-        console.log("change background");
+        console.log("change background:" + this.faceID);
         this.addChild(this.bgBitmap);
-        if (this.getChildByName("backBitmap")) {
+        if (this.faceID == 0) {
             this.removeChild(this.backBitmap);
             this.addChildAt(this.bgBitmap, 0);
             this.faceID = 1;

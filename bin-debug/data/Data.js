@@ -63,8 +63,8 @@ var Data = (function () {
                     numData = Data.iconInfo["redNum"];
                     info["bigImg"] = imgData[1];
                 }
-                //info["smallImg"] = imgData[0];
-                info["num"] = numData[num];
+                info["smallImg"] = imgData[0];
+                //info["num"] = numData[num];
                 info["name"] = nameStr + num;
                 break;
         }

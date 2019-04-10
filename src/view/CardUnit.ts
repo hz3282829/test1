@@ -12,7 +12,7 @@ class CardUnit extends egret.Sprite{
 	 public creatCardByName(cardInfo:Object):void
 	 {
 		 this._cardInfo =cardInfo;
-		 console.log(cardInfo);
+		// console.log(cardInfo);
 		 let bgData:Array<string> = cardInfo["background"];
         let cardSheetName:string = "cardsheet#";
         let bgStr:string = cardSheetName+bgData[0];
@@ -59,9 +59,9 @@ class CardUnit extends egret.Sprite{
 	}
 	public replaceCar():void
 	{
-		console.log("change background");
+		console.log("change background:"+this.faceID);
 		this.addChild(this.bgBitmap);
-		if(this.getChildByName("backBitmap"))
+		if(this.faceID == 0)
 		{
 				this.removeChild(this.backBitmap);
 				this.addChildAt(this.bgBitmap,0);

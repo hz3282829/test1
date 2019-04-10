@@ -36,7 +36,6 @@ class Data {
 		this.iconInfo["background"] = background;
 		//console.log(this.iconInfo);
 		
-
 	}
 	public static getCardData(nameStr:string,num:number =0):Object
 	{
@@ -75,8 +74,8 @@ class Data {
 					info["bigImg"] =imgData[1];
 				}
 				
-				//info["smallImg"] = imgData[0];
-				info["num"] = numData[num];
+				info["smallImg"] = imgData[0];
+				//info["num"] = numData[num];
 				info["name"] = nameStr+num;
 			break;
 			

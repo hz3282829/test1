@@ -74,7 +74,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.cardContainer1 = new CardContainer();
+        _this.cardContainer2 = new CardContainer();
+        _this.cardContainer3 = new CardContainer();
+        return _this;
     }
     Main.prototype.createChildren = function () {
         _super.prototype.createChildren.call(this);
@@ -167,20 +171,32 @@ var Main = (function (_super) {
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
         Data.initIconfo();
-        var cardInfo = Data.getCardData("hearts", 9);
-        //this.card = new CardUnit();
-        var card = new CardUnit();
-        //card.creatCard(bgtextr,numtextr,smalltextr,bigtextr,backtextr,nameStr);
-        card.creatCardByName(cardInfo);
-        this.addChild(card);
+        var cardInfo0 = Data.getCardData("hearts", 9);
         var cardInfo1 = Data.getCardData("spades", 5);
-        //this.card = new CardUnit();
-        var card1 = new CardUnit();
-        //card.creatCard(bgtextr,numtextr,smalltextr,bigtextr,backtextr,nameStr);
-        card1.creatCardByName(cardInfo1);
-        this.addChild(card1);
-        card1.x = 50;
-        card1.y = 100;
+        var cardInfo2 = Data.getCardData("clubs", 8);
+        var cardInfo3 = Data.getCardData("diamonds", 2);
+        var cardInfo4 = Data.getCardData("joker", 12);
+        this.cardContainer1.createCard([cardInfo0, cardInfo1, cardInfo2, cardInfo3, cardInfo4]);
+        this.addChild(this.cardContainer1);
+        this.cardContainer1.x = 250;
+        var cardInfo10 = Data.getCardData("spades", 4);
+        var cardInfo11 = Data.getCardData("spades", 10);
+        var cardInfo12 = Data.getCardData("clubs", 3);
+        var cardInfo13 = Data.getCardData("diamonds", 1);
+        var cardInfo14 = Data.getCardData("diamonds", 8);
+        this.cardContainer2.createCard([cardInfo10, cardInfo11, cardInfo12, cardInfo13, cardInfo14]);
+        this.addChild(this.cardContainer2);
+        this.cardContainer2.x = 100;
+        this.cardContainer2.y = 300;
+        var cardInfo20 = Data.getCardData("joker", 13);
+        var cardInfo21 = Data.getCardData("diamonds", 5);
+        var cardInfo22 = Data.getCardData("clubs", 8);
+        var cardInfo23 = Data.getCardData("diamonds", 9);
+        var cardInfo24 = Data.getCardData("joker", 12);
+        this.cardContainer3.createCard([cardInfo20, cardInfo21, cardInfo22, cardInfo23, cardInfo24]);
+        this.addChild(this.cardContainer3);
+        this.cardContainer3.x = 400;
+        this.cardContainer3.y = 300;
         var replaceCardAsset = function () {
             var bg1textr = RES.getRes("cardsheet#back_g_beimian_png");
             console.log("................", this);
@@ -189,7 +205,7 @@ var Main = (function (_super) {
             // this.replaceCar(bg1textr);
             console.log("................111");
         };
-        var tw2 = egret.Tween.get(card);
+        //let tw2 = egret.Tween.get(card0);
         //tw2.to({x:500,y:500},1000);
         //tw2.to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset,card).to({scaleX:1}, 300, egret.Ease.sineIn);
         //egret.Tween.get(card).to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset).to({scaleX:1}, 300, egret.Ease.sineIn);
@@ -198,7 +214,7 @@ var Main = (function (_super) {
         button.horizontalCenter = 0;
         button.verticalCenter = 0;
         this.addChild(button);
-        button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, card);
+        button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
     };
     //
     Main.prototype.replaceCardAsset1 = function () {
@@ -222,20 +238,14 @@ var Main = (function (_super) {
      * 描述文件加载成功，开始播放动画
      * Description file loading is successful, start to play the animation
      */
-    Main.prototype.replaceCar = function () {
-    };
     /**
      * 点击按钮
      * Click the button
      */
     Main.prototype.onButtonClick = function (e) {
-        // this.replaceCar();
-        console.log(this);
-        // console.log(e.currentTarget)
-        this.replaceCar();
-        //let targetThis = new egret.Cla();
-        //    targetThis = this;
-        //    targetThis.replaceCar();
+        this.cardContainer1.replaceCardAsset();
+        this.cardContainer2.replaceCardAsset();
+        this.cardContainer3.replaceCardAsset();
     };
     return Main;
 }(eui.UILayer));
