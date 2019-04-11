@@ -31,7 +31,7 @@ class Main extends eui.UILayer {
     private   cardContainer1:CardContainer = new CardContainer();
     private   cardContainer2:CardContainer = new CardContainer();
     private   cardContainer3:CardContainer = new CardContainer();
-
+    private   clock:Clock;
     protected createChildren(): void {
         super.createChildren();
             
@@ -54,7 +54,8 @@ class Main extends eui.UILayer {
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
-       
+         this.clock = new Clock(800,15);
+         this.clock.addEventListener(Data.CLOCKEVENT_COMPLETE,this.clockComplete,this);
         this.runGame().catch(e => {
             console.log(e);
         })
@@ -78,6 +79,7 @@ class Main extends eui.UILayer {
             await RES.loadConfig("resource/default.res.json", "resource/");
             await this.loadTheme();
             await RES.loadGroup("preload", 0, loadingView);
+            await this.clock.init();
             this.stage.removeChild(loadingView);
         }
         catch (e) {
@@ -107,6 +109,10 @@ class Main extends eui.UILayer {
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
 
+        let bg:egret.ImageLoader = new egret.ImageLoader();
+            bg.once(egret.Event.COMPLETE,this.bgLoaded,this);
+            bg.load("resource/assets/background.png");
+           
         Data.initIconfo();
         let cardInfo0:Object =Data.getCardData("hearts",9); 
         let cardInfo1:Object =Data.getCardData("spades",5); 
@@ -115,7 +121,8 @@ class Main extends eui.UILayer {
         let cardInfo4:Object =Data.getCardData("joker",12); 
         this.cardContainer1.createCard([cardInfo0,cardInfo1,cardInfo2,cardInfo3,cardInfo4]);
         this.addChild(this.cardContainer1);
-        this.cardContainer1.x = 250;
+        this.cardContainer1.x = 270;
+        this.cardContainer1.y = 30;
 
         let cardInfo10:Object =Data.getCardData("spades",4); 
         let cardInfo11:Object =Data.getCardData("spades",10); 
@@ -124,8 +131,8 @@ class Main extends eui.UILayer {
         let cardInfo14:Object =Data.getCardData("diamonds",8); 
         this.cardContainer2.createCard([cardInfo10,cardInfo11,cardInfo12,cardInfo13,cardInfo14]);
         this.addChild(this.cardContainer2);
-        this.cardContainer2.x = 100;
-        this.cardContainer2.y = 300;
+        this.cardContainer2.x = 80;
+        this.cardContainer2.y = 185;
 
         let cardInfo20:Object =Data.getCardData("joker",13); 
         let cardInfo21:Object =Data.getCardData("diamonds",5); 
@@ -134,12 +141,17 @@ class Main extends eui.UILayer {
         let cardInfo24:Object =Data.getCardData("joker",12); 
         this.cardContainer3.createCard([cardInfo20,cardInfo21,cardInfo22,cardInfo23,cardInfo24]);
         this.addChild(this.cardContainer3);
-        this.cardContainer3.x = 400;
-        this.cardContainer3.y = 300;
+        this.cardContainer3.x = 470;
+        this.cardContainer3.y = 185;
 
-        
+       
+        this.addChild(this.clock);
+        this.clock.x = 330;
+        this.clock.y = 140;
+        this.clock.start();
         let replaceCardAsset:Function =function(){
             let bg1textr:egret.Texture = RES.getRes("cardsheet#back_g_beimian_png");
+            
             console.log("................",this);
            // console.log(this.card);
            // this.card.replaceCar(bg1textr);
@@ -147,22 +159,30 @@ class Main extends eui.UILayer {
             console.log("................111");
         };
 
-         
-         
-
-        //let tw2 = egret.Tween.get(card0);
-            //tw2.to({x:500,y:500},1000);
-            //tw2.to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset,card).to({scaleX:1}, 300, egret.Ease.sineIn);
-            //egret.Tween.get(card).to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset).to({scaleX:1}, 300, egret.Ease.sineIn);
+        
     
 
         let button = new eui.Button();
         button.label = "Click!";
-        button.horizontalCenter = 0;
-        button.verticalCenter = 0;
+        //button.horizontalCenter = 0;
+        //button.verticalCenter = 0;
         this.addChild(button);
         button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
     }
+
+    //
+    private bgLoaded(e:egret.Event):void
+    {
+        console.log("bg is loaded");
+        //console.log(e.currentTarget.data);
+        let bgbitmapData:egret.BitmapData = e.currentTarget.data;
+        let bgtexture:egret.Texture = new egret.Texture();
+            bgtexture.bitmapData = bgbitmapData;
+        let bgBitmap:egret.Bitmap = new egret.Bitmap(bgtexture);
+         this.addChildAt(bgBitmap,0);
+
+    }
+    
     //
     private replaceCardAsset1():void
     {
@@ -199,5 +219,14 @@ class Main extends eui.UILayer {
        this.cardContainer2.replaceCardAsset();
        this.cardContainer3.replaceCardAsset();
 
+    }
+
+    //
+    private clockComplete(e:egret.Event):void
+    {
+            console.log(" clock complete is ok ");
+            this.cardContainer1.replaceCardAsset();
+            this.cardContainer2.replaceCardAsset();
+            this.cardContainer3.replaceCardAsset();
     }
 }

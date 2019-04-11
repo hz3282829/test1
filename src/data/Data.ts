@@ -1,6 +1,7 @@
 class Data {
 	public static cardNameInfo:Object = {};
 	public static iconInfo:Object = {};
+	public static CLOCKEVENT_COMPLETE:string ="CLOCKEVENT_COMPLETE";
 	public constructor() {
 	}
 

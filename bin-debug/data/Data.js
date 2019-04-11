@@ -74,6 +74,7 @@ var Data = (function () {
     };
     Data.cardNameInfo = {};
     Data.iconInfo = {};
+    Data.CLOCKEVENT_COMPLETE = "CLOCKEVENT_COMPLETE";
     return Data;
 }());
 __reflect(Data.prototype, "Data");

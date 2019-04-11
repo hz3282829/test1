@@ -96,6 +96,8 @@ var Main = (function (_super) {
         var assetAdapter = new AssetAdapter();
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
+        this.clock = new Clock(800, 15);
+        this.clock.addEventListener(Data.CLOCKEVENT_COMPLETE, this.clockComplete, this);
         this.runGame().catch(function (e) {
             console.log(e);
         });
@@ -129,7 +131,7 @@ var Main = (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 4, , 5]);
+                        _a.trys.push([0, 5, , 6]);
                         loadingView = new LoadingUI();
                         this.stage.addChild(loadingView);
                         return [4 /*yield*/, RES.loadConfig("resource/default.res.json", "resource/")];
@@ -141,13 +143,16 @@ var Main = (function (_super) {
                         return [4 /*yield*/, RES.loadGroup("preload", 0, loadingView)];
                     case 3:
                         _a.sent();
-                        this.stage.removeChild(loadingView);
-                        return [3 /*break*/, 5];
+                        return [4 /*yield*/, this.clock.init()];
                     case 4:
+                        _a.sent();
+                        this.stage.removeChild(loadingView);
+                        return [3 /*break*/, 6];
+                    case 5:
                         e_1 = _a.sent();
                         console.error(e_1);
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
+                        return [3 /*break*/, 6];
+                    case 6: return [2 /*return*/];
                 }
             });
         });
@@ -170,6 +175,9 @@ var Main = (function (_super) {
     Main.prototype.createGameScene = function () {
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
+        var bg = new egret.ImageLoader();
+        bg.once(egret.Event.COMPLETE, this.bgLoaded, this);
+        bg.load("resource/assets/background.png");
         Data.initIconfo();
         var cardInfo0 = Data.getCardData("hearts", 9);
         var cardInfo1 = Data.getCardData("spades", 5);
@@ -178,7 +186,8 @@ var Main = (function (_super) {
         var cardInfo4 = Data.getCardData("joker", 12);
         this.cardContainer1.createCard([cardInfo0, cardInfo1, cardInfo2, cardInfo3, cardInfo4]);
         this.addChild(this.cardContainer1);
-        this.cardContainer1.x = 250;
+        this.cardContainer1.x = 270;
+        this.cardContainer1.y = 30;
         var cardInfo10 = Data.getCardData("spades", 4);
         var cardInfo11 = Data.getCardData("spades", 10);
         var cardInfo12 = Data.getCardData("clubs", 3);
@@ -186,8 +195,8 @@ var Main = (function (_super) {
         var cardInfo14 = Data.getCardData("diamonds", 8);
         this.cardContainer2.createCard([cardInfo10, cardInfo11, cardInfo12, cardInfo13, cardInfo14]);
         this.addChild(this.cardContainer2);
-        this.cardContainer2.x = 100;
-        this.cardContainer2.y = 300;
+        this.cardContainer2.x = 80;
+        this.cardContainer2.y = 185;
         var cardInfo20 = Data.getCardData("joker", 13);
         var cardInfo21 = Data.getCardData("diamonds", 5);
         var cardInfo22 = Data.getCardData("clubs", 8);
@@ -195,8 +204,12 @@ var Main = (function (_super) {
         var cardInfo24 = Data.getCardData("joker", 12);
         this.cardContainer3.createCard([cardInfo20, cardInfo21, cardInfo22, cardInfo23, cardInfo24]);
         this.addChild(this.cardContainer3);
-        this.cardContainer3.x = 400;
-        this.cardContainer3.y = 300;
+        this.cardContainer3.x = 470;
+        this.cardContainer3.y = 185;
+        this.addChild(this.clock);
+        this.clock.x = 330;
+        this.clock.y = 140;
+        this.clock.start();
         var replaceCardAsset = function () {
             var bg1textr = RES.getRes("cardsheet#back_g_beimian_png");
             console.log("................", this);
@@ -205,16 +218,22 @@ var Main = (function (_super) {
             // this.replaceCar(bg1textr);
             console.log("................111");
         };
-        //let tw2 = egret.Tween.get(card0);
-        //tw2.to({x:500,y:500},1000);
-        //tw2.to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset,card).to({scaleX:1}, 300, egret.Ease.sineIn);
-        //egret.Tween.get(card).to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset).to({scaleX:1}, 300, egret.Ease.sineIn);
         var button = new eui.Button();
         button.label = "Click!";
-        button.horizontalCenter = 0;
-        button.verticalCenter = 0;
+        //button.horizontalCenter = 0;
+        //button.verticalCenter = 0;
         this.addChild(button);
         button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
+    };
+    //
+    Main.prototype.bgLoaded = function (e) {
+        console.log("bg is loaded");
+        //console.log(e.currentTarget.data);
+        var bgbitmapData = e.currentTarget.data;
+        var bgtexture = new egret.Texture();
+        bgtexture.bitmapData = bgbitmapData;
+        var bgBitmap = new egret.Bitmap(bgtexture);
+        this.addChildAt(bgBitmap, 0);
     };
     //
     Main.prototype.replaceCardAsset1 = function () {
@@ -243,6 +262,13 @@ var Main = (function (_super) {
      * Click the button
      */
     Main.prototype.onButtonClick = function (e) {
+        this.cardContainer1.replaceCardAsset();
+        this.cardContainer2.replaceCardAsset();
+        this.cardContainer3.replaceCardAsset();
+    };
+    //
+    Main.prototype.clockComplete = function (e) {
+        console.log(" clock complete is ok ");
         this.cardContainer1.replaceCardAsset();
         this.cardContainer2.replaceCardAsset();
         this.cardContainer3.replaceCardAsset();

@@ -2,7 +2,7 @@ class CardUnit extends egret.Sprite{
 	 public ss:string = "jjj";
 	 private bgBitmap:egret.Bitmap;
 	 private backBitmap:egret.Bitmap;
-	 private faceID:Number = 1;
+	 private faceID:Number = 0;
 	 private cardName:string;
 	 private _cardInfo:Object = {}
 	public constructor() {	
@@ -39,7 +39,7 @@ class CardUnit extends egret.Sprite{
 			this.bgBitmap.x= 0;
 			
 			this.bgBitmap.y= 0;
-		this.addChild(this.bgBitmap);
+		//this.addChild(this.bgBitmap);
 		let numBitmap:egret.Bitmap = new egret.Bitmap(num);
 			numBitmap.x= 0;
 			numBitmap.y= 0;
@@ -56,6 +56,7 @@ class CardUnit extends egret.Sprite{
 		this.backBitmap = new egret.Bitmap(back);
 		this.name = "backBitmap";
 		let nameStr:string= name;
+		this.addChild(this.backBitmap);
 	}
 	public replaceCar():void
 	{

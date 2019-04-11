@@ -13,7 +13,7 @@ var CardUnit = (function (_super) {
     function CardUnit() {
         var _this = _super.call(this) || this;
         _this.ss = "jjj";
-        _this.faceID = 1;
+        _this.faceID = 0;
         _this._cardInfo = {};
         return _this;
     }
@@ -41,7 +41,7 @@ var CardUnit = (function (_super) {
         this.name = "bgBitmap";
         this.bgBitmap.x = 0;
         this.bgBitmap.y = 0;
-        this.addChild(this.bgBitmap);
+        //this.addChild(this.bgBitmap);
         var numBitmap = new egret.Bitmap(num);
         numBitmap.x = 0;
         numBitmap.y = 0;
@@ -57,6 +57,7 @@ var CardUnit = (function (_super) {
         this.backBitmap = new egret.Bitmap(back);
         this.name = "backBitmap";
         var nameStr = name;
+        this.addChild(this.backBitmap);
     };
     CardUnit.prototype.replaceCar = function () {
         console.log("change background:" + this.faceID);

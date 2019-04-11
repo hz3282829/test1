@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,cardsheet_176093c6_png,cardsheet",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,egret_icon_png,description_json,cardsheet_176093c6_png,cardsheet,gamesheet_85578a11_json,gamesheet_2b1864bd_png,background_png",
 			"name": "preload"
 		}
 	],
@@ -122,11 +122,6 @@
 			"name": "track_sb_png"
 		},
 		{
-			"url": "assets/bg.jpg",
-			"type": "image",
-			"name": "bg_jpg"
-		},
-		{
 			"url": "assets/egret_icon.png",
 			"type": "image",
 			"name": "egret_icon_png"
@@ -146,6 +141,22 @@
 			"type": "sheet",
 			"url": "assets/sheet/cardsheet.json",
 			"subkeys": "back_g_beimian2_png,back_g_beimian_png,back_g_gaoliang_png,back_g_paimian_png,icon_g_da_pai0_png,icon_g_da_pai1_png,icon_g_da_pai2_png,icon_g_da_pai3_png,icon_g_da_pai4_png,icon_g_da_pai5_png,icon_g_xiao_pai0_png,icon_g_xiao_pai1_png,icon_g_xiao_pai2_png,icon_g_xiao_pai3_png,num_g_b_10_png,num_g_b_11_png,num_g_b_12_png,num_g_b_13_png,num_g_b_14_png,num_g_b_1_png,num_g_b_2_png,num_g_b_3_png,num_g_b_4_png,num_g_b_5_png,num_g_b_6_png,num_g_b_7_png,num_g_b_8_png,num_g_b_9_png,num_g_r_10_png,num_g_r_11_png,num_g_r_12_png,num_g_r_13_png,num_g_r_14_png,num_g_r_1_png,num_g_r_2_png,num_g_r_3_png,num_g_r_4_png,num_g_r_5_png,num_g_r_6_png,num_g_r_7_png,num_g_r_8_png,num_g_r_9_png"
+		},
+		{
+			"name": "gamesheet_85578a11_json",
+			"type": "sheet",
+			"url": "assets/sheet/gamesheet_85578a11.json",
+			"subkeys": "back_bg_2_png,back_bg_3_png,back_bg_4_png,back_bg_clock_png,back_bg_fail_png,back_bg_title_png,back_bg_win_png,bg_nn_1_png,bg_nn_2_png,btn_icon_gold_png,icon_loading_png,icon_vs_png,icon_vsbg_1_png,icon_vsbg_2_png"
+		},
+		{
+			"name": "gamesheet_2b1864bd_png",
+			"type": "image",
+			"url": "assets/sheet/gamesheet_2b1864bd.png"
+		},
+		{
+			"name": "background_png",
+			"type": "image",
+			"url": "assets/background.png"
 		}
 	]
 }
