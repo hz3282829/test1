@@ -28,9 +28,9 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 class Main extends eui.UILayer {
-    private   cardContainer1:CardContainer = new CardContainer();
-    private   cardContainer2:CardContainer = new CardContainer();
-    private   cardContainer3:CardContainer = new CardContainer();
+    private   cardContainer1:CardContainer = new CardContainer("c1");
+    private   cardContainer2:CardContainer = new CardContainer("c2");
+    private   cardContainer3:CardContainer = new CardContainer("c3");
     private   clock:Clock;
     protected createChildren(): void {
         super.createChildren();
@@ -122,7 +122,7 @@ class Main extends eui.UILayer {
         this.cardContainer1.createCard([cardInfo0,cardInfo1,cardInfo2,cardInfo3,cardInfo4]);
         this.addChild(this.cardContainer1);
         this.cardContainer1.x = 270;
-        this.cardContainer1.y = 30;
+        this.cardContainer1.y = 40;
 
         let cardInfo10:Object =Data.getCardData("spades",4); 
         let cardInfo11:Object =Data.getCardData("spades",10); 
@@ -132,7 +132,7 @@ class Main extends eui.UILayer {
         this.cardContainer2.createCard([cardInfo10,cardInfo11,cardInfo12,cardInfo13,cardInfo14]);
         this.addChild(this.cardContainer2);
         this.cardContainer2.x = 80;
-        this.cardContainer2.y = 185;
+        this.cardContainer2.y = 195;
 
         let cardInfo20:Object =Data.getCardData("joker",13); 
         let cardInfo21:Object =Data.getCardData("diamonds",5); 
@@ -142,7 +142,7 @@ class Main extends eui.UILayer {
         this.cardContainer3.createCard([cardInfo20,cardInfo21,cardInfo22,cardInfo23,cardInfo24]);
         this.addChild(this.cardContainer3);
         this.cardContainer3.x = 470;
-        this.cardContainer3.y = 185;
+        this.cardContainer3.y = 195;
 
        
         this.addChild(this.clock);
@@ -160,8 +160,11 @@ class Main extends eui.UILayer {
         };
 
         
-    
-
+    let betBtn:BetButton = new BetButton();
+        betBtn.init();
+        this.addChild(betBtn);
+        betBtn.x = 400;
+        betBtn.y = 320;
         let button = new eui.Button();
         button.label = "Click!";
         //button.horizontalCenter = 0;

@@ -75,9 +75,9 @@ var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.cardContainer1 = new CardContainer();
-        _this.cardContainer2 = new CardContainer();
-        _this.cardContainer3 = new CardContainer();
+        _this.cardContainer1 = new CardContainer("c1");
+        _this.cardContainer2 = new CardContainer("c2");
+        _this.cardContainer3 = new CardContainer("c3");
         return _this;
     }
     Main.prototype.createChildren = function () {
@@ -187,7 +187,7 @@ var Main = (function (_super) {
         this.cardContainer1.createCard([cardInfo0, cardInfo1, cardInfo2, cardInfo3, cardInfo4]);
         this.addChild(this.cardContainer1);
         this.cardContainer1.x = 270;
-        this.cardContainer1.y = 30;
+        this.cardContainer1.y = 40;
         var cardInfo10 = Data.getCardData("spades", 4);
         var cardInfo11 = Data.getCardData("spades", 10);
         var cardInfo12 = Data.getCardData("clubs", 3);
@@ -196,7 +196,7 @@ var Main = (function (_super) {
         this.cardContainer2.createCard([cardInfo10, cardInfo11, cardInfo12, cardInfo13, cardInfo14]);
         this.addChild(this.cardContainer2);
         this.cardContainer2.x = 80;
-        this.cardContainer2.y = 185;
+        this.cardContainer2.y = 195;
         var cardInfo20 = Data.getCardData("joker", 13);
         var cardInfo21 = Data.getCardData("diamonds", 5);
         var cardInfo22 = Data.getCardData("clubs", 8);
@@ -205,7 +205,7 @@ var Main = (function (_super) {
         this.cardContainer3.createCard([cardInfo20, cardInfo21, cardInfo22, cardInfo23, cardInfo24]);
         this.addChild(this.cardContainer3);
         this.cardContainer3.x = 470;
-        this.cardContainer3.y = 185;
+        this.cardContainer3.y = 195;
         this.addChild(this.clock);
         this.clock.x = 330;
         this.clock.y = 140;
@@ -218,6 +218,11 @@ var Main = (function (_super) {
             // this.replaceCar(bg1textr);
             console.log("................111");
         };
+        var betBtn = new BetButton();
+        betBtn.init();
+        this.addChild(betBtn);
+        betBtn.x = 400;
+        betBtn.y = 320;
         var button = new eui.Button();
         button.label = "Click!";
         //button.horizontalCenter = 0;

@@ -6,8 +6,10 @@ class CardContainer extends egret.Sprite {
 	// private card4:CardUnit;
 	private cardInfo:Array<Object>;
 	private w:number = 30;
-	public constructor() {
+	private point:egret.BitmapText;
+	public constructor(name:string) {	
 		super();
+		this.name = name;
 	}
 	public  createCard(data:Array<Object>):void
 	{
@@ -21,8 +23,36 @@ class CardContainer extends egret.Sprite {
 				card.x = i*this.w;
 				this.addChild(card);
 		}
-	}
+		this.touchEnabled = true;
+		this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.clickHandle,this);
+		this.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchbeginHandle,this);
 
+		RES.getResByUrl("resource/assets/sheet/font_redlittle_num.fnt",this.onLoadComplete,this,RES.ResourceItem.TYPE_FONT);
+	}
+	//
+	private onLoadComplete(e:egret.BitmapFont):void
+	{
+		this.point = new egret.BitmapText();
+			this.point.x = 60;
+			this.point.y = -25;
+			this.point.font = e;
+			this.point.text = "0";
+			this.addChild(this.point);
+
+	}
+//
+	private clickHandle(e:egret.TouchEvent):void
+	{
+		console.log("click name:"+this.name);
+		this.Bets();
+	}
+	//
+	private touchbeginHandle(e:egret.TouchEvent):void
+	{
+		//442031-
+		//398826-38826=360000
+		//console.log("ooollllppppp");
+	}
 	public replaceCardAsset():void
     {
 		for(let i:number = 0;i <this.cardInfo.length;i++)
@@ -38,6 +68,15 @@ class CardContainer extends egret.Sprite {
             //tw2.to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset,card).to({scaleX:1}, 300, egret.Ease.sineIn);
             //egret.Tween.get(card).to({scaleX:0}, 300, egret.Ease.sineOut).call(replaceCardAsset).to({scaleX:1}, 300, egret.Ease.sineIn);
     }
+	//
+	public Bets(num:number =55):void
+	{
+		let thisnum:number = Number( this.point.text);
+	//	console.log("thisnum:"+thisnum);
+		thisnum +=Data.BetNum;
+		this.point.text = String(thisnum);
+
+	}
 
 
 }

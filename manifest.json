@@ -14,6 +14,7 @@
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/data/Data.js",
+		"bin-debug/view/BetButton.js",
 		"bin-debug/view/CardContainer.js",
 		"bin-debug/view/CardUnit.js",
 		"bin-debug/view/Clock.js"

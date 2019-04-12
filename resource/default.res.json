@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,egret_icon_png,description_json,cardsheet_176093c6_png,cardsheet,gamesheet_85578a11_json,gamesheet_2b1864bd_png,background_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,egret_icon_png,description_json,cardsheet_176093c6_png,cardsheet,gamesheet_85578a11_json,gamesheet_2b1864bd_png,background_png,chip_v1sheet_6fc431a3_png,chip_v1sheet_json_json",
 			"name": "preload"
 		}
 	],
@@ -157,6 +157,17 @@
 			"name": "background_png",
 			"type": "image",
 			"url": "assets/background.png"
+		},
+		{
+			"name": "chip_v1sheet_6fc431a3_png",
+			"type": "image",
+			"url": "assets/sheet/chip_v1sheet_6fc431a3.png"
+		},
+		{
+			"name": "chip_v1sheet_json_json",
+			"type": "sheet",
+			"url": "assets/sheet/chip_v1sheet_json.json",
+			"subkeys": "icon_bet_01_png,icon_bet_02_png,icon_bet_03_png,icon_bet_04_png,icon_bet_effect_png"
 		}
 	]
 }

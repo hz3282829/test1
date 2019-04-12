@@ -75,6 +75,8 @@ var Data = (function () {
     Data.cardNameInfo = {};
     Data.iconInfo = {};
     Data.CLOCKEVENT_COMPLETE = "CLOCKEVENT_COMPLETE";
+    Data.BetNum = 10;
+    Data.BetNumArray = [10, 100, 1000, 10000];
     return Data;
 }());
 __reflect(Data.prototype, "Data");

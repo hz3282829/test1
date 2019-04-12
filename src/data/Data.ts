@@ -2,6 +2,8 @@ class Data {
 	public static cardNameInfo:Object = {};
 	public static iconInfo:Object = {};
 	public static CLOCKEVENT_COMPLETE:string ="CLOCKEVENT_COMPLETE";
+	public static BetNum:number = 10;
+	public static BetNumArray:Array<number> =[10,100,1000,10000];
 	public constructor() {
 	}
 

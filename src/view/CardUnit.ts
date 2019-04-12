@@ -57,7 +57,9 @@ class CardUnit extends egret.Sprite{
 		this.name = "backBitmap";
 		let nameStr:string= name;
 		this.addChild(this.backBitmap);
+		
 	}
+	
 	public replaceCar():void
 	{
 		console.log("change background:"+this.faceID);
